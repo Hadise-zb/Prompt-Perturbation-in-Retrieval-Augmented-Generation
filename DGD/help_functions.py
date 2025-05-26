@@ -11,6 +11,9 @@ import torch.nn.functional as F
 
 device = torch.device("cuda")
 
+def get_detailed_instruct(task_description: str, query: str) -> str:
+    return f'Instruct: {task_description}\nQuery: {query}'
+
 def get_embedding(sentence, model, tokenizer):
     tokens = tokenizer(sentence, return_tensors="pt", truncation=True).to(device)
     # print("tokens: ", len(tokens["input_ids"][0]))
